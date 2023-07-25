@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update User</title>
+</head>
+<body>
+    <h1>Update User</h1>
+    <div id="error-message" style="color: red;"></div>
+    <form id="update-form">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="{{ user.nombre }}" required>
+        <br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido" value="{{ user.apellido }}" required>
+        <br>
+        <label for="dni">DNI:</label>
+        <input type="text" name="dni" value="{{ user.dni }}" required>
+        <br>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="text" name="fecha_nacimiento" value="{{ user.fecha_nacimiento }}" required>
+        <br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" name="direccion" value="{{ user.direccion }}" required>
+        <br>
+        <button type="button" onclick="updateUser()">Update User</button>
+    </form>
+    <script>
+        function updateUser() {
+            console.log("Updating user...");
+            const form = document.getElementById("update-form");
+            const formData = new FormData(form);
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+            fetch(`/users/{{ user_id }}/update/`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Update successful", data);
+                window.location.href = "/users/";
+            })
+            .catch((error) => {
+                console.error("Update failed", error);
+                const errorMessageElement = document.getElementById("error-message");
+                errorMessageElement.textContent = "Error updating user: " + error.message;
+            });
+        }
+    </script>    
+</body>
+</html>
