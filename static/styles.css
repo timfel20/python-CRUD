@@ -40,6 +40,7 @@ body{
   label {
     display: block;
     margin-bottom: 10px;
+    color: #148083;
   }
   
   .button {
@@ -53,5 +54,25 @@ body{
   
   .button:hover {
     background-color: #0056b3;
+  }
+
+  .user-list{
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+  }
+  .user-actions{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+
+  a{
+    color: white;
+    text-decoration: none;
   }
   

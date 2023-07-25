@@ -43,17 +43,38 @@
         </button>
     </form>
     <br>
-    <h2 class="header-text">Users</h2>
-    <ul>
+    <h2 class="header-text" >Users</h2>
+    <div class="user-list">
         {% for user in users %}
-        <li>
-            {{ user.nombre }} {{ user.apellido }} (DNI: {{ user.dni }})
-            <a href="/users/{{ loop.index0 }}/update/">Update</a>
-            <form method="post" action="/users/{{ loop.index0 }}/delete/?_method=DELETE">
-                <input type="submit" value="Delete" class="button">
-            </form>
-        </li>
+        <div class="user-card">
+            <div class="user-details">
+                <p><strong>Nombre:</strong> {{ user.nombre }}</p>
+                <p><strong>Apellido:</strong> {{ user.apellido }}</p>
+                <p><strong>DNI:</strong> {{ user.dni }}</p>
+                <p><strong>Fecha de Nacimiento:</strong> {{ user.fecha_nacimiento }}</p>
+                <p><strong>Dirección:</strong> {{ user.direccion }}</p>
+                <div class="user-actions">
+                    <button class="button">
+                        <a href="/users/{{ loop.index0 }}/update/">
+                            <span class="top-key"></span>
+                            <span>Update</span>
+                            <span class="bottom-key-1"></span>
+                            <span class="bottom-key-2"></span>
+                        </a>
+                    </button>
+                  
+                    <form method="post" action="/users/{{ loop.index0 }}/delete/?_method=DELETE">
+                        <button type="submit" class="button">
+                            <span class="top-key"></span>
+                            <span >Delete</span>
+                            <span class="bottom-key-1"></span>
+                            <span class="bottom-key-2"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 </html>
