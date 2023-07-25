@@ -2,28 +2,43 @@
 <html>
 <head>
     <title>Update User</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
 </head>
 <body>
-    <h1>Update User</h1>
+    <h1 class="header-text">Update User</h1>
     <div id="error-message" style="color: red;"></div>
-    <form id="update-form">
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" value="{{ user.nombre }}" required>
-        <br>
-        <label for="apellido">Apellido:</label>
-        <input type="text" name="apellido" value="{{ user.apellido }}" required>
-        <br>
-        <label for="dni">DNI:</label>
-        <input type="text" name="dni" value="{{ user.dni }}" required>
-        <br>
-        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-        <input type="text" name="fecha_nacimiento" value="{{ user.fecha_nacimiento }}" required>
-        <br>
-        <label for="direccion">Dirección:</label>
-        <input type="text" name="direccion" value="{{ user.direccion }}" required>
-        <br>
-        <button type="button" onclick="updateUser()">Update User</button>
-    </form>
+    <div class="form">
+        <form id="update-form">
+            <div class="flex">
+                <label>
+                    <input class="input" type="text" name="nombre" value="{{ user.nombre }}" required>
+                    <span>Nombre</span>
+                </label>
+
+                <label>
+                    <input class="input" type="text" name="apellido" value="{{ user.apellido }}" required>
+                    <span>Apellido</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input class="input" type="text" name="dni" value="{{ user.dni }}" required>
+                <span>DNI</span>
+            </label> 
+            
+            <label>
+                <input class="input" type="text" name="fecha_nacimiento" value="{{ user.fecha_nacimiento }}" required>
+                <span>Fecha de Nacimiento</span>
+            </label>
+            
+            <label>
+                <input class="input" type="text" name="direccion" value="{{ user.direccion }}" required>
+                <span>Dirección</span>
+            </label>
+            
+            <button type="button" onclick="updateUser()" class="button">Update User</button>
+        </form>
+    </div>
     <script>
         function updateUser() {
             console.log("Updating user...");
@@ -56,6 +71,6 @@
                 errorMessageElement.textContent = "Error updating user: " + error.message;
             });
         }
-    </script>    
+    </script>   
 </body>
 </html>

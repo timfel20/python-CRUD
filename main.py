@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, Form, HTTPException
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List
 
@@ -8,6 +9,8 @@ app = FastAPI()
 users = []
 
 templates = Jinja2Templates(directory="templates")
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 class User(BaseModel):
