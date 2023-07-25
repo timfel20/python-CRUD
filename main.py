@@ -21,7 +21,7 @@ class User(BaseModel):
     direccion: str
 
 
-@app.post("/users/", response_model=User)
+@app.post("/", response_model=User)
 async def create_user(
     request: Request,
     nombre: str = Form(...),
@@ -41,26 +41,26 @@ async def create_user(
     return templates.TemplateResponse("index.html", {"request": request, "users": users})
 
 
-@app.get("/users/", response_model=List[User])
+@app.get("/", response_model=List[User])
 async def get_users(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "users": users})
 
 
-@app.get("/users/{user_id}", response_model=User)
+@app.get("/{user_id}", response_model=User)
 async def get_user(user_id: int, request: Request):
     if user_id < 0 or user_id >= len(users):
         raise HTTPException(status_code=404, detail="User not found")
     return templates.TemplateResponse("index.html", {"request": request, "users": [users[user_id]]})
 
 
-@app.get("/users/{user_id}/update/")
+@app.get("/{user_id}/update/")
 async def get_update_user(user_id: int, request: Request):
     if user_id < 0 or user_id >= len(users):
         raise HTTPException(status_code=404, detail="User not found")
     return templates.TemplateResponse("update.html", {"request": request, "user": users[user_id], "user_id": user_id})
 
 
-@app.put("/users/{user_id}/update/", response_model=User)
+@app.put("/{user_id}/update/", response_model=User)
 async def update_user(
     user_id: int,
     updated_user: User,
@@ -72,7 +72,7 @@ async def update_user(
     users[user_id] = updated_user
     return updated_user
 
-@app.post("/users/{user_id}/delete/", response_model=User)
+@app.post("/{user_id}/delete/", response_model=User)
 async def delete_user(user_id: int, request: Request):
     if user_id < 0 or user_id >= len(users):
         raise HTTPException(status_code=404, detail="User not found")

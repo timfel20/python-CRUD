@@ -48,7 +48,7 @@
             formData.forEach((value, key) => {
                 jsonData[key] = value;
             });
-            fetch(`/users/{{ user_id }}/update/`, {
+            fetch(`/{{ user_id }}/update/`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -63,7 +63,7 @@
             })
             .then((data) => {
                 console.log("Update successful", data);
-                window.location.href = "/users/";
+                window.location.href = "/";
             })
             .catch((error) => {
                 console.error("Update failed", error);

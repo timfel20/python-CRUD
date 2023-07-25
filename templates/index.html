@@ -1,4 +1,3 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +6,7 @@
 </head>
 <body>
     <h1 class="header-text">User Management</h1>
-    <form class="form" method="post" action="/users/">
+    <form class="form" method="post" action="/">
         <div class="flex">
             <label>
                 <input class="input" type="text" name="nombre" placeholder="" required>
@@ -55,7 +54,7 @@
                 <p><strong>Dirección:</strong> {{ user.direccion }}</p>
                 <div class="user-actions">
                     <button class="button">
-                        <a href="/users/{{ loop.index0 }}/update/">
+                        <a href="/{{ loop.index0 }}/update/">
                             <span class="top-key"></span>
                             <span>Update</span>
                             <span class="bottom-key-1"></span>
@@ -63,7 +62,7 @@
                         </a>
                     </button>
                   
-                    <form method="post" action="/users/{{ loop.index0 }}/delete/?_method=DELETE">
+                    <form method="post" action="/{{ loop.index0 }}/delete/?_method=DELETE">
                         <button type="submit" class="button">
                             <span class="top-key"></span>
                             <span >Delete</span>
