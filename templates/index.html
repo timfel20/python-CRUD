@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Management</title>
+    <title>Crear Usuarios</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1 class="header-text">User Management</h1>
+    <h1 class="header-text">Crear Usuarios</h1>
     <form class="form" method="post" action="/">
         <div class="flex">
             <label>
@@ -42,7 +42,7 @@
         </button>
     </form>
     <br>
-    <h2 class="header-text" >Users</h2>
+    <h2 class="header-text" >Usuarios</h2>
     <div class="user-list">
         {% for user in users %}
         <div class="user-card">
@@ -56,7 +56,7 @@
                     <button class="button">
                         <a href="/{{ loop.index0 }}/update/">
                             <span class="top-key"></span>
-                            <span>Update</span>
+                            <span>Editar</span>
                             <span class="bottom-key-1"></span>
                             <span class="bottom-key-2"></span>
                         </a>
@@ -65,7 +65,7 @@
                     <form method="post" action="/{{ loop.index0 }}/delete/?_method=DELETE">
                         <button type="submit" class="button">
                             <span class="top-key"></span>
-                            <span >Delete</span>
+                            <span >Borar</span>
                             <span class="bottom-key-1"></span>
                             <span class="bottom-key-2"></span>
                         </button>
